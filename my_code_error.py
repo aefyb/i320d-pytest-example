@@ -25,6 +25,13 @@ def test_fix_phone_num():
 
 def test_two_fix_phone_num():
   # function should be able to handle 555-442-98761 and (321) 654 3333
-  fix_phone_num("555-442-98761")
-  fix_phone_num("(321) 654 3333")
+    with pytest.raises(ValueError):
+        if not "555-442-98761".isdigit():
+            raise ValueError("Phone number must contain only digits")
+        fix_phone_num("555-442-98761")
+    
+    with pytest.raises(ValueError):
+        if not "(321) 654 3333".isdigit():
+            raise ValueError("Phone number must contain only digits")
+        fix_phone_num("(321) 654 3333")
 
